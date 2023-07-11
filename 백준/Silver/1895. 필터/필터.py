@@ -6,7 +6,7 @@ for _ in range(r):
     li.append(list(map(int, input().split())))
 t = int(input())
 
-new_i = []
+cnt = 0
 for z in range(0, r-2):
     for i in range(0, c-2):
         f = []
@@ -14,6 +14,6 @@ for z in range(0, r-2):
             f += li[j][i:i+3]
         f.sort()
         if f[4] >= t:
-            new_i.append(f[4])
+            cnt += 1
 
-print(len(new_i))
+print(cnt)
