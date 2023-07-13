@@ -1,5 +1,7 @@
+import sys
+input = sys.stdin.readline
 n, m = map(int, input().split())
-li = [*(input() for _ in range(n))]
+li = [*(input().rstrip() for _ in range(n))]
 ans = []
 hd = 0
 
