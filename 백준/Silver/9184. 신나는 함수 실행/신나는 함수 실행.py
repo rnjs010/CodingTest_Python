@@ -1,3 +1,4 @@
+import sys
 def func(a, b, c):
     if a <= 0 or b <= 0 or c <= 0:
         return 1
@@ -13,7 +14,7 @@ def func(a, b, c):
 
 dp = [[[0]*21 for _ in range(21)] for _ in range(21)]
 while True:
-    a, b, c = map(int, input().split())
+    a, b, c = map(int, sys.stdin.readline().split())
     if a == -1 and b == -1 and c == -1:
         break
     print(f'w({a}, {b}, {c}) = {func(a, b, c)}')
