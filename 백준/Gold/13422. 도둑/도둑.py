@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 t = int(input())
 for _ in range(t):
     n, m, k = map(int, input().split())
@@ -10,13 +12,10 @@ for _ in range(t):
             cnt += 1
         if n == m: break
 
-        l = i - 1
         r = i + m - 1
-        if l >= n:
-            l -= n
         if r >= n:
             r -= n
-        money -= li[l]
+        money -= li[i - 1]
         money += li[r]
 
     print(cnt)
