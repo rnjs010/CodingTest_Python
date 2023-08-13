@@ -21,6 +21,7 @@ while True:
 
     nx += x[d % 4]
     ny += y[d % 4]
+    time += 1
     if nx < 0 or ny < 0 or nx >= n or ny >= n or (ny, nx) in dq:
         break
 
@@ -30,6 +31,4 @@ while True:
     else:
         dq.popleft()
 
-    time += 1
-
-print(time + 1)
+print(time)
