@@ -10,17 +10,13 @@ for _ in range(m):
     graph[b].append(a)
 
 cnt = 0
-def dfs(x):
-    global cnt
-    q = deque()
-    q.append(x)
-    while q:
-        x = q.popleft()
-        for i in graph[x]:
-            if not visit[i]:
-                visit[i] = 1
-                q.append(i)
-                cnt += 1
-    return cnt
+q = deque([int(input())])
+while q:
+    x = q.popleft()
+    for i in graph[x]:
+        if not visit[i]:
+            visit[i] = 1
+            q.append(i)
+            cnt += 1
 
-print(dfs(int(input())))
+print(cnt)
