@@ -1,32 +1,32 @@
+import sys
+input = sys.stdin.readline
+
 n, s, r = map(int, input().split())
-demaged = list(map(int,input().split()))
-extra = list(map(int,input().split()))
+x_li = sorted([*map(int, input().split())])
+o_li = sorted([*map(int, input().split())])
 
-list1 = [1] * n
-for i in demaged:
-    list1[i-1] -= 1
-for j in extra:
-    list1[j-1] += 1
+temp = x_li.copy()
+for i in temp:
+    if i in o_li:
+        o_li.remove(i)
+        x_li.remove(i)
 
-for k in range(len(list1)):
-    if list1[k] == 0:
-        if k == 0:
-            if list1[k+1] == 2:
-                list1[k+1] = 1
-                list1[k] = 1
-        elif k == len(list1)-1:
-            if list1[k-1] == 2:
-                list1[k-1] = 1
-                list1[k] = 1
+li = [1] * (n+1)
+for i in x_li: li[i] = 0
+for i in o_li: li[i] = 2
+
+for i in range(1, n+1):
+    if li[i] == 0:
+        if i == n:
+            if li[i-1] == 2:
+                li[i], li[i-1] = 1, 1
+                break
         else:
-            if list1[k-1] == 2:
-                list1[k-1] = 1
-                list1[k] = 1
-                continue              
-            if list1[k+1] == 2:
-                list1[k+1] = 1
-                list1[k] = 1
+            if li[i-1] == 2:
+                li[i], li[i-1] = 1, 1
                 continue
-    else:
-        continue
-print(list1.count(0))
+            if li[i+1] == 2:
+                li[i], li[i+1] = 1, 1
+                continue
+
+print(li.count(0))
